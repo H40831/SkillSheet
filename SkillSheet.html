@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />    
+
+<title>SumiYukio SkillSheet</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 16px;
+    background: #ccc;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    font-family: "Helvetica Neue",
+        Arial,
+        "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans",
+        Meiryo,
+        sans-serif
+    ;
+}
+.flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.flex.between {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+.flex.align-center {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-grid-row-align: center;
+}
+.screen {
+    display: inherit;
+}
+.print {
+    display: none;
+}
+
+#main-container {
+    margin: 2rem auto;
+    padding: 5rem;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    max-width: 720px;
+    border-radius: .5rem;
+    background: -webkit-gradient(linear,left top, left bottom,from(#fff),to(#eee));
+    background: -o-linear-gradient(#fff,#eee);
+    background: linear-gradient(#fff,#eee);
+}
+
+/* https://taneppa.net/shadow_paper/ */
+.paper {
+    position: relative;
+}
+.paper::before,
+.paper::after {
+    content:"";
+    position: absolute;
+    z-index: -1;
+    bottom: 10px;
+    display: block;
+    width: 50%;
+    height: 10px;
+    -webkit-box-shadow: 0 10px 5px #999;
+            box-shadow: 0 10px 5px #999;
+}
+.paper::before {
+    left: 5px;
+    -webkit-transform:rotate(-2deg);
+        -ms-transform:rotate(-2deg);
+            transform:rotate(-2deg);
+}
+.paper::after {
+    right: 5px;
+    -webkit-transform:rotate(2deg);
+        -ms-transform:rotate(2deg);
+            transform:rotate(2deg);
+}
+
+.link-box {
+    text-align: right;
+}
+.link {
+    color: initial;
+}
+header {
+    margin-bottom: 4rem;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+#title {
+    white-space: nowrap;
+    font-size: 3em;
+}
+.section-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+section {
+    margin-bottom: 3rem;
+}
+
+.text {
+    margin-top: -1.5em;
+    white-space: pre-line;
+}
+.indent {
+    margin-left: 1.5em;
+}
+.note {
+    margin-bottom: 1.5em;
+}
+
+.tag-list {
+    font-size: 0;
+}
+.tag-list li {
+    cursor: default;
+    list-style: none;
+    display: inline-block;
+    background: #555;
+    border-radius: .25rem;
+    padding: .25rem .5rem;
+    line-height: 1;
+    font-size: .75rem;
+    color: #fff;
+}
+.tag-list li:not(:last-of-type) {
+    margin: 0 .25rem .25rem 0;
+}
+
+#name {
+    margin-right: 1em;
+}
+.current-job:before {
+    content: '現職';
+    position: absolute;
+    top: -2em;
+    left: -1.5em;
+    -webkit-transform: rotate(-20deg);
+        -ms-transform: rotate(-20deg);
+            transform: rotate(-20deg);
+    font-size: 10px;
+    font-weight: bold;
+}
+.company-name {
+    position: relative;
+    margin: 1.5em 0 .5em;
+}
+.company-name .department {
+    margin-left: 1em;
+    font-size: 1rem;
+    font-weight: normal;
+}
+.skill-list {
+    margin: 1rem 0;
+}
+.working-period {
+    margin-right: 1.5em;
+}
+.pr-point {
+    font-size: 1em;
+    margin-bottom: .5em;
+}
+#closing {
+    text-align: center;
+}
+
+@media screen and (orientation: portrait) {
+    html {
+        font-size: 12px;
+    }
+    #main-container {
+        margin: 4rem auto;
+        padding: 4rem 2rem;
+        max-width: 80vw;
+    }
+    .current-job:before {
+        left: -.5em;
+    }
+}
+
+@media print {
+    html {
+        font-size: 16px;
+    }
+    body {
+        -webkit-print-color-adjust: exact;
+    }
+    .screen {
+        display: none;
+    }
+    .print {
+        display: inherit;
+    }
+    #main-container {
+        margin: 0;
+        padding: 5rem;
+        width: 100vw;
+        background: #fff;
+    }
+    .paper::before,
+    .paper::after {
+        content: none;
+    }
+}
+</style>
+</head>
+
+<body>
+<main id="main-container" class="paper">
+    <div class="link-box print">
+        <b>Qiita Account：</b><u>H40831</u>
+        <b>GitHub Account：</b><u>H40831</u>
+    </div>
+    <div class="link-box screen">
+        <b>Link：</b>
+        <a class="link" href="https://qiita.com/H40831/" target="_blank" rel=”noopener noreferrer”>Qiita</a>
+        <a class="link" href="https://github.com/H40831/" target="_blank" rel=”noopener noreferrer”>GitHub</a>
+    </div>
+    <header class="flex between align-center">
+        <h1 id="title">Skill Sheet</h1>
+        <div>
+            <span id="name"><b>氏名：</b>鷲見 幸男</span>
+            <span id="age"><b>年齢：</b>28歳</span>
+        </div>
+    </header>
+    <h2 class="section-title">職務経歴</h2>
+
+    <section class="history-container">
+        <h3 class="company-name current-job">株式会社マイナビワークス<span class="department">若年キャリア事業部 システム開発課<span></h3>
+        <div class="flex">
+            <p class="working-period"><b>期間：</b>2020年 1月 〜 現在（1年1ヶ月）</p>
+            <p class="number-of-member"><b>チーム人数：</b>3〜5名</p>
+        </div>
+        <div class="skill-list">
+            <ul class="tag-list">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>jQuery</li>
+                <li>Vue</li>
+                <li>PHP</li>
+                <li>Laravel</li>
+                <li>MariaDB</li>
+                <li>AWS</li>
+                <li>Bitbucket</li>
+                <li>Backlog</li>
+                <li>HR-BuisinessCloud</li>
+                <li>Slack</li>
+                <li>Teams</li>
+            </ul>
+        </div>
+        <p class="text indent">
+            【概要】
+            転職エージェントサービス「マイナビジョブ20’s」のWEB開発。
+            URL: <a class="link" href="https://mynavi-job20s.jp/" target="_blank" rel=”noopener noreferrer”>https://mynavi-job20s.jp/</a>
+            少数体制のため、担当工程は、開発からリリースまでを一貫して対応しています。
+            
+            【担当業務詳細】
+            ・自社サービスの機能の追加・変更。不具合の修正など。（フロントエンド＆サーバーサイド）
+            ・サービスサイト（PHP5・jQuery）
+            ・求職者用マイページ（PHP7・jQuery）
+            ・新規サービス（PHP7・Laravel・Vue）
+            ・機能の追加、ページ表示速度の改善、処理の共通化、UI/UX向上など
+            ・業務自動化のためのバッチ処理の開発（PHP7）
+            ・ワークフローの改善などをはじめとした、チームの向上のための取り組み。
+            　・拡張性・可読性の低いコードや仕様書の改善の提案
+            　・案件の優先度の見直し＆長期的目線で工数を削減するための施策の提案
+            　・エンジニア主体の案件を提案していくための流れづくり
+            　・要件定義や工数見積の正確性を上げるための取り組み
+            　・事業計画の理解を深めるための臨時会議の企画　等
+        </p>
+    </section>
+
+    <section class="history-container">
+        <h3 class="company-name">株式会社インタースペース<span class="department">ネイティブアド事業部<span></h3>
+        <div class="flex">
+            <p class="working-period"><b>期間：</b>2019年 7月 〜 2019年12月（0年6ヶ月）</p>
+            <p class="number-of-member"><b>チーム人数：</b>3〜5名</p>
+        </div>
+        <div class="skill-list">
+            <ul class="tag-list">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Linux</li>
+                <li>AWS</li>
+                <li>MySQL</li>
+                <li>Trello</li>
+                <li>Slack</li>
+            </ul>
+        </div>
+        <p class="text indent">
+            【概要】
+            レコメンドウィジェット型WEB広告サービス「X-lift（クロスリフト）」の設置に伴う業務。
+            ※該当サービスは撤退済のため、サービスサイトなし。
+
+            【担当業務詳細】
+            ・広告生成システムの管理画面を利用した、コーディング業務
+            ・広告導入先のデザインに合わせたCSSのコーディング
+            ・DOM操作の必要がある場合のJavaScriptコーディング
+            ・コンテンツ生成時に必要となるファイルをEC2上に作成する作業
+            ・MySQLクライアントを利用したデータベースのメンテナンス　など。
+
+            【補足】
+            ・当社在籍中に、Git、Linuxコマンド、MySQL、AWSを習得し実務で使用しました。
+            ・当社在籍中に、Vue.jsやPHPも勉強し、理解を深めました。
+        </p>
+    </section>
+
+    <section class="history-container">
+        <h3 class="company-name">SOMPOコミュニケーションズ株式会社</h3>
+        <div class="flex">
+            <p class="working-period"><b>期間：</b>2017年 4月 〜 2019年 6月（2年2ヶ月）</p>
+            <p class="number-of-member"></p>
+        </div>
+        <div class="skill-list">
+            <ul class="tag-list">
+                <li>社内システム</li>
+                <li>Excel</li>
+            </ul>
+        </div>
+        <p class="text indent">
+            【概要】
+            自動車保険・火災保険・各種損害保険の電話対応業務を担当。
+            ・保険金請求の受付や、それに付随する各種手配など。
+            （異業種のため、詳細略。）
+        </p>
+    </section>
+
+    <section class="history-container">
+        <h3 class="company-name">株式会社TOOT</h3>
+        <div class="flex">
+            <p class="working-period"><b>期間：</b>2014年 4月 〜 2017年 3月（3年0ヶ月）</p>
+            <p class="number-of-member"></p>
+        </div>
+        <div class="skill-list">
+            <ul class="tag-list">
+                <li>CSS</li>
+                <li>HTML</li>
+                <li>jQuery</li>
+                <li>Photoshop</li>
+                <li>Illustrator</li>
+                <li>AfterEffects</li>
+                <li>Excel</li>
+            </ul>
+        </div>
+        <p class="text indent">
+            【概要】
+            アパレル生産関連、デザイン関連、WEB関連のアシスタント業務を担当。
+            【担当業務詳細】
+            ・販売、キャンペーン、イベントページ等作成のために必要な、
+            　IllustratorやPhotoshopのデータの作成、
+            　またUIパーツの挿入のためのコーディングなど。
+            ・雑務の自動化・効率化を提案し実施。
+            　（ExcelへのVLOOKUP関数の導入や、マクロツールを使った自動化など。）
+            ・ECページやルックブック用の写真の撮影アシスタント・加工・編集。
+            ・縫製仕様書の作成。
+            　（Illustratorでのイメージ作成なども含む。）
+            ・ノベルティやシルクスクリーンプリント用のデザイン作成。（Illustrator）
+            ・宣伝動画の作成。（AfterEffects）
+            ・見本製品の管理。
+            ・ECサイトの運用に伴う情報入力など。（自社システム）
+        </p>
+    </section>
+
+    <h2 class="section-title">PRポイント</h2>
+    <section class="pr-container">
+        <h3 class="pr-point">自己開発</h3>
+        <p class="text indent">
+            趣味としてVue.jsとGoogleAPIを利用したサーバーレスPWAアプリを開発中です。
+            試してみたいことを自己責任でトライ＆エラーできるため、業務での習得とは違った形で知識を広げています。
+        </p>
+    </section>
+    <section class="pr-conteiner">
+        <h3 class="pr-point">エンジニアコミュニティへの参加</h3>
+        <p class="text indent">
+            経験者と未経験者が交流するLINEオープンチャットや、
+            朝活勉強会、PWAコミュニティ、サービス開発者が集まるコミュニティなど、
+            多様な方向性のエンジニアコミュニティに参加して、いろいろな観点の意見・情報をキャッチしています。
+        </p>
+    </section>
+    <section class="pr-conteiner">
+        <h3 class="pr-point">メンター活動</h3>
+        <p class="text indent">
+            ものごとを教えるのが好きなので、メンター活動を行ってます。
+            オンラインやオフラインで、未経験や初心者向けにプログラミングを教えたりしています。
+        </p>
+    </section>
+    
+    <p id="closing" class="text">
+        以上です。
+        是非、お話の機会をいただければ幸いです。
+    </p>
+
+</main>
+
+<script>
+
+</script>
+</body>
+</html>
