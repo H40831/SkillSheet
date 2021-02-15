@@ -1,2 +1,2 @@
 # SkillSheet
-https://h40831.github.io/SkillSheet/index.html
+https://h40831.github.io/SkillSheet/
