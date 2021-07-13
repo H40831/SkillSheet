@@ -6,219 +6,221 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />    
 
 <title>SumiYukio SkillSheet</title>
+
 <style>
-* {
-    margin: 0;
-    padding: 0;
-}
-html {
-    font-size: 16px;
-    background: #ccc;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    font-family: "Helvetica Neue",
-        Arial,
-        "Hiragino Kaku Gothic ProN",
-        "Hiragino Sans",
-        Meiryo,
-        sans-serif
-    ;
-}
-.flex {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-}
-.flex.between {
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-}
-.flex.align-center {
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -ms-grid-row-align: center;
-}
-.screen {
-    display: inherit;
-}
-.print {
-    display: none;
-}
-
-#main-container {
-    margin: 2rem auto;
-    padding: 5rem;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    max-width: 720px;
-    border-radius: .5rem;
-    background: -webkit-gradient(linear,left top, left bottom,from(#fff),to(#eee));
-    background: -o-linear-gradient(#fff,#eee);
-    background: linear-gradient(#fff,#eee);
-}
-
-/* https://taneppa.net/shadow_paper/ */
-.paper {
-    position: relative;
-}
-.paper::before,
-.paper::after {
-    content:"";
-    position: absolute;
-    z-index: -1;
-    bottom: 10px;
-    display: block;
-    width: 50%;
-    height: 10px;
-    -webkit-box-shadow: 0 10px 5px #999;
-            box-shadow: 0 10px 5px #999;
-}
-.paper::before {
-    left: 5px;
-    -webkit-transform:rotate(-2deg);
-        -ms-transform:rotate(-2deg);
-            transform:rotate(-2deg);
-}
-.paper::after {
-    right: 5px;
-    -webkit-transform:rotate(2deg);
-        -ms-transform:rotate(2deg);
-            transform:rotate(2deg);
-}
-
-.link-box {
-    text-align: right;
-}
-.link {
-    color: initial;
-}
-header {
-    margin-bottom: 4rem;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-}
-#title {
-    white-space: nowrap;
-    font-size: 3em;
-}
-.section-title {
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-section {
-    margin-bottom: 3rem;
-}
-
-.text {
-    margin-top: -1.5em;
-    white-space: pre-line;
-}
-.indent {
-    margin-left: 1.5em;
-}
-.note {
-    margin-bottom: 1.5em;
-}
-
-.tag-list {
-    font-size: 0;
-}
-.tag-list li {
-    cursor: default;
-    list-style: none;
-    display: inline-block;
-    background: #555;
-    border-radius: .25rem;
-    padding: .25rem .5rem;
-    line-height: 1;
-    font-size: .75rem;
-    color: #fff;
-}
-.tag-list li:not(:last-of-type) {
-    margin: 0 .25rem .25rem 0;
-}
-
-#name {
-    margin-right: 1em;
-}
-.current-job:before {
-    content: '現職';
-    position: absolute;
-    top: -2em;
-    left: -1.5em;
-    -webkit-transform: rotate(-20deg);
-        -ms-transform: rotate(-20deg);
-            transform: rotate(-20deg);
-    font-size: 10px;
-    font-weight: bold;
-}
-.company-name {
-    position: relative;
-    margin: 1.5em 0 .5em;
-}
-.company-name .department {
-    margin-left: 1em;
-    font-size: 1rem;
-    font-weight: normal;
-}
-.skill-list {
-    margin: 1rem 0;
-}
-.working-period {
-    margin-right: 1.5em;
-}
-.pr-point {
-    font-size: 1em;
-    margin-bottom: .5em;
-}
-.pr-container {
-    margin-bottom: 2rem;
-}
-#closing {
-    text-align: center;
-}
-
-@media screen and (orientation: portrait) {
-    html {
-        font-size: 12px;
+    * {
+        margin: 0;
+        padding: 0;
     }
-    #main-container {
-        margin: 4rem auto;
-        padding: 4rem 2rem;
-        max-width: 80vw;
-    }
-    .current-job:before {
-        left: -.5em;
-    }
-}
-
-@media print {
     html {
         font-size: 16px;
+        background: #ccc;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        font-family: "Helvetica Neue",
+            Arial,
+            "Hiragino Kaku Gothic ProN",
+            "Hiragino Sans",
+            Meiryo,
+            sans-serif
+        ;
     }
-    body {
-        -webkit-print-color-adjust: exact;
+    .flex {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .flex.between {
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+    }
+    .flex.align-center {
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -ms-grid-row-align: center;
     }
     .screen {
-        display: none;
-    }
-    .print {
         display: inherit;
     }
+    .print {
+        display: none;
+    }
+
     #main-container {
-        margin: 0;
+        overflow-x: hidden;
+        margin: 2rem auto;
         padding: 5rem;
-        width: 100vw;
-        background: #fff;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        max-width: 720px;
+        border-radius: .5rem;
+        background: -webkit-gradient(linear,left top, left bottom,from(#fff),to(#eee));
+        background: -o-linear-gradient(#fff,#eee);
+        background: linear-gradient(#fff,#eee);
+    }
+
+    /* https://taneppa.net/shadow_paper/ */
+    .paper {
+        position: relative;
     }
     .paper::before,
     .paper::after {
-        content: none;
+        content:"";
+        position: absolute;
+        z-index: -1;
+        bottom: 10px;
+        display: block;
+        width: 50%;
+        height: 10px;
+        -webkit-box-shadow: 0 10px 5px #999;
+                box-shadow: 0 10px 5px #999;
     }
-}
+    .paper::before {
+        left: 5px;
+        -webkit-transform:rotate(-2deg);
+            -ms-transform:rotate(-2deg);
+                transform:rotate(-2deg);
+    }
+    .paper::after {
+        right: 5px;
+        -webkit-transform:rotate(2deg);
+            -ms-transform:rotate(2deg);
+                transform:rotate(2deg);
+    }
+
+    .link-box {
+        text-align: right;
+    }
+    .link {
+        color: initial;
+    }
+    header {
+        margin-bottom: 4rem;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    }
+    #title {
+        white-space: nowrap;
+        font-size: 3em;
+    }
+    .section-title {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    section {
+        margin-bottom: 3rem;
+    }
+
+    .text {
+        margin-top: -1.5em;
+        white-space: pre-line;
+    }
+    .indent {
+        margin-left: 1.5em;
+    }
+    .note {
+        margin-bottom: 1.5em;
+    }
+
+    .tag-list {
+        font-size: 0;
+    }
+    .tag-list li {
+        cursor: default;
+        list-style: none;
+        display: inline-block;
+        background: #555;
+        border-radius: .25rem;
+        padding: .25rem .5rem;
+        line-height: 1;
+        font-size: .75rem;
+        color: #fff;
+    }
+    .tag-list li:not(:last-of-type) {
+        margin: 0 .25rem .25rem 0;
+    }
+
+    #name {
+        margin-right: 1em;
+    }
+    .current-job:before {
+        content: '現職';
+        position: absolute;
+        top: -2em;
+        left: -1.5em;
+        -webkit-transform: rotate(-20deg);
+            -ms-transform: rotate(-20deg);
+                transform: rotate(-20deg);
+        font-size: 10px;
+        font-weight: bold;
+    }
+    .company-name {
+        position: relative;
+        margin: 1.5em 0 .5em;
+    }
+    .company-name .department {
+        margin-left: 1em;
+        font-size: 1rem;
+        font-weight: normal;
+    }
+    .skill-list {
+        margin: 1rem 0;
+    }
+    .working-period {
+        margin-right: 1.5em;
+    }
+    .pr-point {
+        font-size: 1em;
+        margin-bottom: .5em;
+    }
+    .pr-container {
+        margin-bottom: 2rem;
+    }
+    #closing {
+        text-align: center;
+    }
+
+    @media screen and (orientation: portrait) {
+        html {
+            font-size: 12px;
+        }
+        #main-container {
+            margin: 4rem auto;
+            padding: 4rem 2rem;
+            max-width: 80vw;
+        }
+        .current-job:before {
+            left: -.5em;
+        }
+    }
+
+    @media print {
+        html {
+            font-size: 16px;
+        }
+        body {
+            -webkit-print-color-adjust: exact;
+        }
+        .screen {
+            display: none;
+        }
+        .print {
+            display: inherit;
+        }
+        #main-container {
+            margin: 0;
+            padding: 5rem;
+            width: 100vw;
+            background: #fff;
+        }
+        .paper::before,
+        .paper::after {
+            content: none;
+        }
+    }
 </style>
 </head>
 
@@ -243,9 +245,32 @@ section {
     <h2 class="section-title">職務経歴</h2>
 
     <section class="history-container">
+        <h3 class="company-name">ミイダス株式会社</h3>
+        <div class="flex">
+            <p class="working-period"><b>期間：</b>2021年 9月 〜 就業予定</p>
+            <p class="number-of-member"><b>チーム人数：</b>不明</p>
+        </div>
+        <div class="skill-list">
+            <ul class="tag-list">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>React</li>
+                <li>Redux</li>
+                <li>Next.js</li>
+                <li>PWA</li>
+                <li>Webpack</li>
+            </ul>
+        </div>
+        <p class="text indent">
+            フロントエンドエンジニアとして就業予定。
+        </p>
+    </section>
+
+    <section class="history-container">
         <h3 class="company-name current-job">株式会社マイナビワークス<span class="department">若年キャリア事業部 システム開発課<span></h3>
         <div class="flex">
-            <p class="working-period"><b>期間：</b>2020年 1月 〜 現在（1年1ヶ月）</p>
+            <p class="working-period"><b>期間：</b>2020年 1月 〜 2021年 8月</p>
             <p class="number-of-member"><b>チーム人数：</b>3〜5名</p>
         </div>
         <div class="skill-list">
